@@ -9,5 +9,4 @@ urlpatterns = patterns('',
     url(r'^$', 'portrait.views.home', name='home'),
     url(r'^home', 'portrait.views.home', name='home'),
     url(r'^auth', 'portrait.views.auth', name='auth'),
-    url(r'^auth_verify', 'portrait.views.auth_verify', name='auth_verify'),
 )
