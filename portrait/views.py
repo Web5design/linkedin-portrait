@@ -5,6 +5,8 @@ from django.utils.encoding import *
 from django.core.context_processors import csrf
 import json, httplib, urllib
 
+p = os.path.abspath(os.path.dirname(__file__))
+
 
 
 def http_post(url, path, params):
@@ -37,3 +39,10 @@ def auth(request):
 
 def home(request):
 	return render_to_response('home.html')
+
+def connections(request):
+	return render_to_response('connections.html')
+
+
+def data(request):
+	return HttpResponse(open(p+'/static/data/data.json').read(), mimetype="application/json")
