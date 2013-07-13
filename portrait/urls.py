@@ -6,12 +6,8 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'portrait.views.home', name='home'),
-    # url(r'^portrait/', include('portrait.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'portrait.views.home', name='home'),
+    url(r'^home', 'portrait.views.home', name='home'),
+    url(r'^auth', 'portrait.views.auth', name='auth'),
+    url(r'^auth_verify', 'portrait.views.auth_verify', name='auth_verify'),
 )
