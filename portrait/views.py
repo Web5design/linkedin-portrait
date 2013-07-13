@@ -31,8 +31,7 @@ def auth(request):
 		return HttpResponse(json.dumps(res), mimetype="application/json")
 	except Exception, e:
 		res = {'status': 'Error'}
-		res['error'] = request.GET["error"]
-		res['error_description'] = request.GET["error_description"]
+		res['error'] = e
 		return HttpResponse(json.dumps(res), mimetype="application/json")
 
 
