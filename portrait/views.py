@@ -7,14 +7,29 @@ import json
 
 
 
+def http_post(url, path, params):
+	conn = httplib.HTTPSConnection(url)
+	headers = {"Content-type": "application/x-www-form-urlencoded",
+			"Accept": "text/plain"}
+	params = urllib.urlencode(params)
+	conn.request("POST", path, params, headers)	
+	res = conn.getresponse().read()
+	return json.loads(res)
+
+
 def auth(request):
-	res = {'status': 'Error'}
 	try:
-		res['code'] = request.GET["code"]
-		res['state'] = request.GET["state"]
-		res['status'] = 'OK'
+		code = request.GET["code"]
+		state = request.GET["state"]
+        params = {'grant_type'='authorization_code', 
+        		  'code': code, 
+        		  'redirect_uri': 'http://anantb.csail.mit.edu:8000/auth', 
+        		  'client_id': 'o0ezp27jbqro', 
+        		  'client_secret':'VwSszmPmDs1YeZLz' }
+		res = http_post("www.linkedin.com", '/uas/oauth2/accessToken', params)
 		return HttpResponse(json.dumps(res), mimetype="application/json")
 	except Exception, e:
+		res = {'status': 'Error'}
 		res['error'] = request.GET["error"]
 		res['error_description'] = request.GET["error_description"]
 		return HttpResponse(json.dumps(res), mimetype="application/json")
