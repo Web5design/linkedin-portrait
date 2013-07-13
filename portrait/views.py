@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.utils.encoding import *
 
 from django.core.context_processors import csrf
-import json
+import json, httplib, urllib
 
 
 
