@@ -21,11 +21,12 @@ def auth(request):
 	try:
 		code = request.GET["code"]
 		state = request.GET["state"]
-        params = {'grant_type':'authorization_code', 
-        		  'code': code, 
-        		  'redirect_uri': 'http://anantb.csail.mit.edu:8000/auth', 
-        		  'client_id': 'o0ezp27jbqro', 
-        		  'client_secret':'VwSszmPmDs1YeZLz' }
+		params = {'grant_type' : 'authorization_code', 
+				'code': code, 
+				'redirect_uri': 'http://anantb.csail.mit.edu:8000/auth', 
+				'client_id': 'o0ezp27jbqro', 
+				'client_secret':'VwSszmPmDs1YeZLz',
+				'state':state}
 		res = http_post("www.linkedin.com", '/uas/oauth2/accessToken', params)
 		return HttpResponse(json.dumps(res), mimetype="application/json")
 	except Exception, e:
