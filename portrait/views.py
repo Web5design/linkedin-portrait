@@ -13,11 +13,11 @@ def auth(request):
 		res['code'] = request.GET["code"]
 		res['state'] = request.GET["state"]
 		res['status'] = 'OK'
-		return HttpResponse(res, mimetype="application/json")
+		return HttpResponse(json.dumps(res), mimetype="application/json")
 	except Exception, e:
 		res['error'] = request.GET["error"]
 		res['error_description'] = request.GET["error_description"]
-		return HttpResponse(res, mimetype="application/json")
+		return HttpResponse(json.dumps(res), mimetype="application/json")
 
 
 def home(request):
