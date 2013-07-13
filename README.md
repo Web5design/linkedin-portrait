@@ -1,4 +1,4 @@
-linkedi-portrait
+linkedin-portrait
 ================
 
 LinkedIn Portrait
