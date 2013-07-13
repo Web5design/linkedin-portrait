@@ -21,7 +21,7 @@ def auth(request):
 	try:
 		code = request.GET["code"]
 		state = request.GET["state"]
-        params = {'grant_type'='authorization_code', 
+        params = {'grant_type':'authorization_code', 
         		  'code': code, 
         		  'redirect_uri': 'http://anantb.csail.mit.edu:8000/auth', 
         		  'client_id': 'o0ezp27jbqro', 
